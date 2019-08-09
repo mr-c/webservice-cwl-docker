@@ -175,7 +175,7 @@ outputs:
   phobius_out:
     type: File
     outputBinding:
-      glob: "*phobius_results.out*"
+      glob: "*.out.txt*"
 
 
 $schemas:
