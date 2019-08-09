@@ -22,6 +22,7 @@ hints:
   DockerRequirement:
     dockerPull: ebiwp/webservice-clients
 
+inputs:
   email:
     type: string
     inputBinding:
