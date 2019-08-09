@@ -17,7 +17,7 @@ class: Workflow
 
 inputs:
   email: string
-  sequence: string
+  sequence: File
 
 outputs:
   pepinfo_output:
