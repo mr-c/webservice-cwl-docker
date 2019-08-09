@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 
-# Copyright (C) 2019 EMBL - European Bioinformatics Institute
+# Copyright (C) 2018 EMBL - European Bioinformatics Institute
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,44 +14,56 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-label: "Clustal Omega"
-id: "clustalo"
-baseCommand: clustalo.py
-
+baseCommand: dbfetch.pl
 hints:
   DockerRequirement:
     dockerPull: ebiwp/webservice-clients
 
-  email:
+inputs:
+
+  accessions-string:
+    type: string?
+    inputBinding:
+      position: 4
+
+  accessions-file:
+    type: File?
+    inputBinding:
+      position: 4
+
+  numberAccessions:
+    type: string?
+    inputBinding:
+      position: 5
+    default: '15'
+
+  method:
     type: string
     inputBinding:
-      prefix: --email
-    default: 'test@ebi.ac.uk'
+      position: 2
+    default: 'fetchBatch'
 
-  sequences:
-    type: File
-    inputBinding:
-      prefix: --sequence
-
-  stype:
+  database:
     type: string
+    doc: Database to be searched.
     inputBinding:
-      prefix: --stype
-
-  outfile:
-    type: string
-    inputBinding:
-      prefix: --outfile
-    default: 'clustalo_out'
+      position: 3
+    default: 'uniprot'
 
   outformat:
     type: string
+    doc: Format of the output
     inputBinding:
-      prefix: --outformat
-    default: 'aln-clustal_num'
+      position: 6
+    default: 'fasta'
+
+  outstyle:
+    type: string
+    doc: Style of the output
+    inputBinding:
+      position: 7
+    default: 'raw'
 
 outputs:
-  clustalo_out:
-    type: File
-    outputBinding:
-      glob: "*clustalo_out.aln-clustal_num*"
+  sequences:
+    type: stdout

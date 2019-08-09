@@ -14,44 +14,41 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-label: "Clustal Omega"
-id: "clustalo"
-baseCommand: clustalo.py
+label: "Simple Phylogeny"
+id: "simple_phylogeny"
+baseCommand: simple_phylogeny.py
 
 hints:
   DockerRequirement:
     dockerPull: ebiwp/webservice-clients
 
+inputs:
   email:
     type: string
     inputBinding:
       prefix: --email
     default: 'test@ebi.ac.uk'
 
-  sequences:
+  alignment:
     type: File
     inputBinding:
       prefix: --sequence
-
-  stype:
-    type: string
-    inputBinding:
-      prefix: --stype
-
-  outfile:
-    type: string
-    inputBinding:
-      prefix: --outfile
-    default: 'clustalo_out'
+      position: 1
 
   outformat:
     type: string
     inputBinding:
       prefix: --outformat
-    default: 'aln-clustal_num'
+    default: 'tree'
+
+  outfile:
+    type: string
+    inputBinding:
+      prefix: --outfile
+    default: 'hits'
 
 outputs:
-  clustalo_out:
+  tree:
     type: File
     outputBinding:
-      glob: "*clustalo_out.aln-clustal_num*"
+      glob: "*hits.tree.*"
