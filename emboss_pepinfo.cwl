@@ -14,9 +14,20 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: perl
+label: "EMBOSS pepinfo"
+id: "emboss_pepinfo"
+baseCommand: emboss_pepinfo.py
+
+hints:
+  DockerRequirement:
+    dockerPull: ebiwp/webservice-clients
+
 
 inputs:
+  email:
+    type: string?
+    inputBinding:
+      prefix: --email
 
   sequence:
     type: File?
