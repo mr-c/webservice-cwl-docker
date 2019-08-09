@@ -32,6 +32,7 @@ steps:
   pepinfo_step:
     run: 'emboss_pepinfo.cwl'
     in:
+      email: email
       sequence: sequence
     out: [pepinfo_out]
 
