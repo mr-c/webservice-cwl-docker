@@ -3,7 +3,7 @@
 email: 'test@ebi.ac.uk'
 sequence:
   class: File
-  location: ../sequence/dna_sequence.fasta
+  location: ../dna_sequence.fasta
 
 # Blast inputs
 program: blastp
