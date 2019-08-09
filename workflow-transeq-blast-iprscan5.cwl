@@ -23,8 +23,7 @@ inputs:
   type: string
   outformat: string
   numberAccessions: string
-  method: string
-  stype: string
+  type: string
 
 # two separate output file points
 outputs:
