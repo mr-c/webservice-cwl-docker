@@ -17,10 +17,6 @@ class: CommandLineTool
 baseCommand: perl
 
 inputs:
-  email:
-    type: string?
-    inputBinding:
-      prefix: --email
 
   sequence:
     type: File?
