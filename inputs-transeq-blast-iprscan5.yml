@@ -1,0 +1,12 @@
+# Use for embosss_transeq-blast_clustalo workflow
+# Emboss_transeq inputs
+email: 'test@ebi.ac.uk'
+sequence:
+  class: File
+  location: ../sequence/dna_sequence.fasta
+
+# Blast inputs
+program: blastp
+database: uniprotkb_swissprot
+type: protein
+outformat: ids
