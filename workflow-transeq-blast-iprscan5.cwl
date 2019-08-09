@@ -28,9 +28,6 @@ inputs:
 
 # two separate output file points
 outputs:
-  workflow_output:
-    type: File
-    outputSource: ncbiblast_step/blast_ids
 
   iprscan5_output:
     type: File
