@@ -29,7 +29,7 @@ inputs:
       prefix: --email
 
   sequence:
-    type: string?
+    type: File
     inputBinding:
       prefix: --sequence
 

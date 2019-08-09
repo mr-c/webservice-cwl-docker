@@ -1,3 +1,5 @@
 # Use for emboss_pepinfo-emboss_backtranseq-emboss_cpgplot workflow
 email: test@ebi.ac.uk
-sequence: sp:phyb_arath
+sequence:
+  class: File
+  location: ../webservice-cwl-docker/prot_sequence.fasta
