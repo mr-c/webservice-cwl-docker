@@ -22,8 +22,7 @@ inputs:
   database: string
   type: string
   outformat: string
-  numberAccessions: string
-  type: string
+
 
 # two separate output file points
 outputs:
