@@ -14,151 +14,47 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-label: "NCBI Blast"
-id: "ncbiblast"
-baseCommand: ncbiblast.py
+label: "Clustal Omega"
+id: "clustalo"
+baseCommand: clustalo.py
 
 hints:
   DockerRequirement:
     dockerPull: ebiwp/webservice-clients
 
-inputs:
-
   email:
     type: string
-    inputBinding:
+      inputBinding:
       prefix: --email
+    default: 'test@ebi.ac.uk'
 
-  sequence_string:
-    type: string?
-    inputBinding:
+  sequences:
+    type: File
+      inputBinding:
       prefix: --sequence
 
-  sequence_file:
-    type: File?
-    inputBinding:
-      prefix: --sequence
-
-  program:
-    type: string?
-    inputBinding:
-      prefix: --program
-
-  type:
-    type: string?
+  stype:
+    type: string
     inputBinding:
       prefix: --stype
 
-  database:
-    type: string?
-    inputBinding:
-      prefix: --database
-
-  matrix:
-    type: string?
-    inputBinding:
-      prefix: --matrix
-
-  alignments:
-    type: int?
-    inputBinding:
-      prefix: --alignments
-
-  scores:
-    type: int?
-    inputBinding:
-      prefix: --scores
-
-  exp:
-    type: int?
-    inputBinding:
-      prefix: --exp
-
-  dropoff:
-    type: int?
-    inputBinding:
-      prefix: --dropoff
-
-  gapopen:
-    type: int?
-    inputBinding:
-      prefix: --gapopen
-
-  gapext:
-    type: int?
-    inputBinding:
-      prefix: --gapext
-
-  filter:
-    type: boolean?
-    inputBinding:
-      prefix: --filter
-
-  seqrange:
-    type: string?
-    inputBinding:
-      prefix: --seqrange
-
-  gapalign:
-    type: boolean?
-    inputBinding:
-      prefix: --gapalign
-
-  compstats:
-    type: string?
-    inputBinding:
-      prefix: --compstats
-
-  align:
-    type: int?
-    inputBinding:
-      prefix: --align
-
-    # general options
-  multifasta:
-    type: string?
-    inputBinding:
-      prefix: --multifasta
-
-  useSeqId:
-    type: string?
-    inputBinding:
-      prefix: --useSeqId
-
-  maxJobs:
-    type: string?
-    inputBinding:
-      prefix: --maxJobs
-
   outfile:
-    type: string?
+    type: string
     inputBinding:
       prefix: --outfile
+    default: 'clustalo_out'
 
   outformat:
-    type: string?
+    type: string
     inputBinding:
       prefix: --outformat
-
+    default: 'aln-clustal_num'
 
 outputs:
-  blast_ids:
-    type: File?
+  clustalo_out:
+    type: File
     outputBinding:
-      glob: "*.ids.*"
-
-  blast_sequence:
-    type: File?
-    outputBinding:
-      glob: "*.sequence.txt"
-
-  blast_array_accs:
-    type:
-      type: array
-      items: File
-    outputBinding:
-      glob: "*.accs.*"
-
+      glob: "*clustalo_out.aln-clustal_num*"
 
 $schemas:
   - http://schema.org/docs/schema_org_rdfa.html

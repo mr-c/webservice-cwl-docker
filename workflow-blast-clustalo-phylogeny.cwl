@@ -16,17 +16,18 @@ cwlVersion: v1.0
 class: Workflow
 
 inputs:
-  email: string
   sequence: string
+  email: string
   program: string
   database: string
   type: string
-  outformat: string
+  method: string
+  stype: string
 
 outputs:
   workflow_output:
     type: File
-    outputSource: phobius_step/phobius_out
+    outputSource: phylogeny_step/tree
 
 steps:
   ncbiblast_step:
@@ -37,12 +38,25 @@ steps:
       program: program
       database: database
       type: type
-      outformat: outformat
-    out: [blast_sequence]
+    out: [blast_ids]
 
-  phobius_step:
-    run: 'phobius.cwl'
+  dbfetch:
+    run: 'dbfetch.cwl'
     in:
-      sequence: ncbiblast_step/blast_sequence
+      accessions-file: ncbiblast_step/blast_ids
+      method: method
+    out: [sequences]
+
+  clustalo_step:
+    run: 'clustalo.cwl'
+    in:
+      sequences: dbfetch/sequences
       email: email
-    out: [phobius_out]
+      stype: stype
+    out: [clustalo_out]
+
+  phylogeny_step:
+    run: 'simple_phylogeny.cwl'
+    in:
+      alignment: clustalo_step/clustalo_out
+    out: [tree]

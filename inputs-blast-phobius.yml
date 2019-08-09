@@ -3,5 +3,5 @@ sequence: sp:phyb_arath
 email: test@ebi.ac.uk
 program: blastp
 database: uniprotkb_swissprot
-stype: protein
+type: protein
 outformat: sequence
