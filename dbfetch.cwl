@@ -21,47 +21,43 @@ hints:
 
 inputs:
 
-  accessions-string:
-    type: string?
-    inputBinding:
-      position: 4
-
-  accessions-file:
-    type: File?
-    inputBinding:
-      position: 4
-
-  numberAccessions:
-    type: string?
-    inputBinding:
-      position: 5
-    default: '15'
-
   method:
-    type: string
+    type:
+        type: enum
+        symbols:
+          - fetchData
+          - fetchBatch
+    doc: Type of command-line interface.
     inputBinding:
-      position: 2
-    default: 'fetchBatch'
+      position: 0
 
-  database:
-    type: string
+  dbName:
+    type: string?
     doc: Database to be searched.
     inputBinding:
-      position: 3
+      position: 1
     default: 'uniprot'
 
-  outformat:
-    type: string
+  idList:
+    type: File?
+    doc: fetching idList
+    inputBinding:
+      itemSeparator: ","
+      position: 2
+
+  outFormat:
+    type: string?
     doc: Format of the output
     inputBinding:
-      position: 6
-    default: 'fasta'
+      position: 3
+    default: 'fasta'    
+
 
   outstyle:
     type: string
     doc: Style of the output
     inputBinding:
-      position: 7
+      position: 4
     default: 'raw'
 
 outputs:
