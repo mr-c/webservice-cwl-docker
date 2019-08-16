@@ -17,7 +17,7 @@ class: Workflow
 
 inputs:
   email: string
-  sequence: string
+  sequence: File
   program: string
   database: string
   type: string
@@ -32,7 +32,7 @@ steps:
   ncbiblast_step:
     run: 'ncbiblast.cwl'
     in:
-      sequence_string: sequence
+      sequence_file: sequence
       email: email
       program: program
       database: database
