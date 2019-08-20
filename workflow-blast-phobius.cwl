@@ -22,7 +22,6 @@ inputs:
   database: string
   type: string
   outformat: string
-  blarb: string
 
 outputs:
   workflow_output:
